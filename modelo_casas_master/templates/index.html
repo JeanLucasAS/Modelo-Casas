@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo Casas Master</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<h2>Consultar preço de casas</h2>
+<form action ="/" method ="post">
+            
+    <label for="metro_quadrado">Área construída (m²):</label>
+    <input type="number" id="square_footage" name="Square_Footage" step="0.1" required>
+
+    <label for="qtd_quartos">Número de quartos:</label>
+    <input type="number" id="num_bedrooms" name="Num_Bedrooms" min="0" step="1" required>
+
+    <label for="qtd_banheiros">Número de banheiros:</label>
+    <input type="number" id="num_bathrooms" name="Num_Bathrooms" min="0" step="1" required>
+
+    <label for="ano_construção">Ano de construção:</label>
+    <input type="number" id="year_built" name="Year_Built" min="1800" max="2025" required>
+
+    <label for="tam_lote">Tamanho do terreno (m²):</label>
+    <input type="number" id="lot_size" name="Lot_Size" step="0.1" required>
+
+    <label for="tam_garagem">Tamanho da garagem (vagas):</label>
+    <input type="number" id="garage_size" name="Garage_Size" min="0" step="1" required>
+
+    <label for="vizinhanca">Qualidade do bairro:</label>
+    <select id="neighborhood_quality" name="Neighborhood_Quality" required>
+      <option value="">Selecione...</option>
+      <option value="1">1 - Muito ruim</option>
+      <option value="2">2 - Ruim</option>
+      <option value="3">3 - Médio</option>
+      <option value="4">4 - Bom</option>
+      <option value="5">5 - Excelente</option>
+    </select>
+
+    <button type="submit">Calcular Preço Estimado</button>
+    
+</form>
+{% if price is not none %}
+<div class="resultado">
+    <h3>Resultado da Consulta:</h3>
+    <p>O preço estimado é: {{ price }}</p>
+</div>
+{% endif %}
+
+</body>
+</html>
